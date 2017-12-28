@@ -1,0 +1,84 @@
+header {
+    background-image: url(http://www.kathryndipippo.com/SooshARPG/img/tilebg2_small.png);
+    color: rgba(0,0,0,0.87);
+    font-size: 20px;
+    display: flex;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    padding: 0.5em 2em;
+    margin: 0 auto;
+    -webkit-box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.2);
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.2);
+}
+.container-fluid {
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+.headerblankspace {
+    height: 50px;
+}
+header i {
+    vertical-align: middle;
+    padding-right: 1em;
+}
+.headerIcon {
+    padding: 0 10px;
+    vertical-align: middle;
+}
+.headerLink, .headerLink:hover {
+    color: rgba(0,0,0,0.87);
+    text-decoration: none;
+}
+.headerOverlay {
+    display: none;
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0,0,0,.5);
+    z-index: 1001;
+}
+.sidebar {
+    background-color: #FFFFFF;
+    width: 30%;
+    height: 100%;
+    position: fixed;
+    left: -30%;
+    z-index: 1002;
+    transition: 0.5s all;
+    -webkit-transition: 0.5s all;
+}
+.sidebarTitle {
+    font-size: 20px;
+    padding-left: 16px;
+    line-height: 56px;
+}
+.sidebarNav {
+    padding: 0;
+}
+.sidebarNav>li {
+    list-style: none;
+    text-align: left;
+}
+.sidebarNav>li>a {
+    color: rgba(0,0,0,0.87);
+    text-decoration: none;
+    display: block;
+    padding: 16px;
+}
+.sidebarNav>li.active, .sidebarNav>li.active:hover {
+    background-color: #E0E0E0;
+}
+.sidebarNav>li:hover {
+    background-color: #E8E8E8;
+}
+.sidebarNav>li.active>a, .sidebarNav>li:hover>a {
+    color: #757575;
+}
+#sidebarTrigger {
+    cursor: pointer;
+    padding: 10px;
+}
