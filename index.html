@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="css/sandboxHeader.css">
     <style>
     body {
-        background-image: url(http://www.kathryndipippo.com/SooshARPG/img/tilebg2_small.png);
+        background-image: url(img/tradecenterBG.png);
         color: rgba(0,0,0,0.87);
     }
     .container-fluid {
@@ -24,12 +24,17 @@
         flex-wrap: wrap;
     }
     .flexTable3>div {
-        width: 30%;
+        width: 100%;
         box-sizing: border-box;
         flex-grow: 1;
         overflow: hidden;
         list-style: none;
         margin: 1em;
+    }
+    @media only screen and (min-width: 768px) {
+        .flexTable3>div {
+            width: 30%;
+        }
     }
     .card a {
         color: rgba(0,0,0,0.87);
@@ -44,6 +49,12 @@
     }
     .card-title {
         text-shadow: 0 0 4px #000;
+        font-family: 'HelloSunshineMarker';
+        font-size: 40px !important;
+        padding-bottom: 0 !important;
+    }
+    .topImages {
+        position: relative;
     }
     .topImage {
         display: block;
@@ -51,6 +62,22 @@
         height: 25em;
         margin: 0 auto;
         object-fit: cover;
+    }
+    .logoImage {
+        z-index: 10;
+        position: absolute;
+        bottom: 0;
+        height: 200px;
+        width: 100%;
+        object-fit: contain;
+        -webkit-box-shadow: 0px 0px 107px 0px rgba(255,255,255,1);
+        -moz-box-shadow: 0px 0px 107px 0px rgba(255,255,255,1);
+        box-shadow: 0px 0px 107px 0px rgba(255,255,255,1);
+        background-color: rgba(255,255,255,0.5);
+    }
+    .updateDate {
+        opacity: 0.5;
+        padding-bottom: 10px;
     }
     .bulletedList {
         padding-left: 40px !important;
@@ -67,8 +94,10 @@
 <div id="headerSection"></div>
 
 <div class="container-fluid">
-    <img class="topImage" src="img/sooshBanner.png">
-    <h4>Sushi Dogs</h4>
+    <div class="topImages">
+        <img class="topImage" src="img/sooshBanner.png">
+        <img class="logoImage" src="img/sooshLogo.png">
+    </div>
     <p><b>Sushi Dogs</b>, also called <b>Sooshes</b>, are tiny canine creatures that resemble foods and drinks from around the globe. Sushi Dogs are named as such because they are roughly the size of a single piece of sushi. They are iconically known for having closed eyes, colorful cheeks, and swirl bandanas. The Sushi Dog online community consists of collectors and artists who enjoy making artwork of and trading Sushi Dog characters; only authorized moderators can create official Sushi Dogs, which adds to their rarity.</p>
     <p>In April 2017, I became a moderator of the deviantArt groups and extended my web development skills through projects for two different facets of the community:</p>
     <ul class="bulletedList">
@@ -78,12 +107,26 @@
     <p>Sushi Dogs were created by <a href="https://spikedpeach.deviantart.com/">Jess / SpikedPeach</a> and are co-lead by <a href="https://ufokitten.deviantart.com/">Bryanna "Noxi" Davidson / UFOKitten</a>.</p>
     <div class="flexTable3">
         <div class="card">
+            <a href="tradecenter.html">
+                <div class="card-image">
+                    <img src="https://orig00.deviantart.net/3153/f/2017/349/f/d/ss___drdoomy_by_witchhex-dbwu63r.png">
+                    <span class="card-title">Soosh Trade Center</span>
+                </div>
+                <div class="card-content">
+                    <p class="updateDate">Last Updated: 1/2/2018</p>
+                    <p>The Sushi Dogs' Trade Center on the official deviantArt group does not feature images of the sooshes put available. I made this tool for myself as an easy way to gather every on-going trade (and not just officially approved ones), but it has since been shared by members of the community.</p><br>
+                    <p>I also collaborated with WitchHex on deviantArt to make the google spreadsheet easier to modify. Added new filter options, added Wanderer's Cave feature, made spreadsheet not require each soosh's URL and image URL to be repasted every time and instead pulls this information from WitchHex's massive soosh spreadsheet</p>
+                </div>
+            </a>
+        </div>
+        <div class="card">
             <a href="http://www.kathryndipippo.com/WebDevSandbox/sooshTraitVisualizer.html">
                 <div class="card-image">
                     <img src="http://www.sushidogs.com/uploads/1/0/4/9/10492009/8932842.png?190">
                     <span class="card-title">Soosh Trait Visualizer</span>
                 </div>
                 <div class="card-content">
+                    <p class="updateDate">Last Updated: 12/24/2017</p>
                     <p>Because I have trouble coming up with how to combine sushi dog traits, I made a "dress-up"-game type thing that gives me a "base" to start off with. This project's implementation is currently stored in the Web Development Sandbox, but I plan to eventually move into a separate Sushidog repository than here.</p>
                 </div>
             </a>
@@ -95,6 +138,7 @@
                     <span class="card-title">SooshARPG - Kumo Tracker</span>
                 </div>
                 <div class="card-content">
+                    <p class="updateDate">Last Updated: 6/4/2017</p>
                     <p>The first iteration of the SooshARPG tracker. I made this one personally for my character - Kumo the Soosh and his companion Lottie the spider - and modified it over time with plans for other users to use it as a template. The information for this sheet is stored in a google spreadsheet and pulled via two JS libraries. This project is on hiatus as I have continued my work in SooshARPG 2.0.</p>
                 </div>
             </a>
@@ -106,6 +150,7 @@
                     <span class="card-title">SooshARPG Moderator Tools</span>
                 </div>
                 <div class="card-content">
+                    <p class="updateDate">Last Updated: 5/8/2017</p>
                     <p>When I became a moderator for SooshARPG in April 2017, one of my first tasks assigned to me was to perform "dailies". This meant: if a member requested their soosh to perform a skill (like hunting, fishing, etc.), then a moderator comments whether the soosh was successful and gives items/experience points. This task was really tedious to do by hand, so I immediately went to make a roller myself. This repo has since expanded into other moderator tools. This project is on hiatus as I have continued my work in SooshARPG 2.0.</p>
                 </div>
             </a>
@@ -117,6 +162,7 @@
                     <span class="card-title">SooshARPG 2.0</span>
                 </div>
                 <div class="card-content">
+                    <p class="updateDate">Last Updated: 10/12/2017</p>
                     <p>While working on modifying the moderator tools and the Kumo tracker repositories, I made a new repository dedicated to recreating the tools from scratch. The key hightlights so far:</p>
                     <ul class="bulletedList">
                         <li>There is 1 master spreadsheet that can be editted by the mods for keeping track of important statistics.</li>
@@ -128,40 +174,17 @@
             </a>
         </div>
         <div class="card">
-            <a href="http://www.kathryndipippo.com/SooshARPG/tradecenter.html">
-                <div class="card-image">
-                    <img src="https://pre00.deviantart.net/845f/th/pre/i/2017/349/f/a/_secret_soosh____have_a_grape_holiday__by_pepper_wood-dbvl2jk.png">
-                    <span class="card-title">Soosh Trade Center</span>
-                </div>
-                <div class="card-content">
-                    <p>The Sushi Dogs' Trade Center on the official deviantArt group does not feature images of the sooshes put available. I made this tool for myself as an easy way to gather every on-going trade (and not just officially approved ones), but it has since been shared by members of the community.</p>
-                </div>
-            </a>
-        </div>
-        <div class="card">
             <a href="http://www.kathryndipippo.com/SooshARPG/database.html">
                 <div class="card-image">
                     <img src="https://orig00.deviantart.net/d12c/f/2017/244/4/5/miloburied_by_wanderover-dbm1qno.png">
-                    <span class="card-title">Soosh Database</span>
+                    <span class="card-title">Soosh Database Webpage</span>
                 </div>
                 <div class="card-content">
+                    <p class="updateDate">Last Updated: 4/30/2017</p>
                     <p>In the early days as a moderator, I wanted to make an easy-to-update database for all the sushi dogs. There is currently a deviantArt account that maintains these records (sooshDatabase on deviantArt), but I wanted to add an easy way to keep track of how a soosh was transferred, i.e. through trade, through sale, etc. The page pulls from a google spreadsheet with multiple tabs dedicated to different portions of information. I am no longer updating the spreadsheet but am proud of the result.</p>
                 </div>
             </a>
         </div>
-        <div class="card">
-            <a href="http://www.kathryndipippo.com/SooshARPG/witchhex.html">
-                <div class="card-image">
-                    <img src="https://orig00.deviantart.net/3153/f/2017/349/f/d/ss___drdoomy_by_witchhex-dbwu63r.png">
-                    <span class="card-title">WitchHex DB</span>
-                </div>
-                <div class="card-content">
-                    <p>A collaboration between myself and WitchHex on deviantArt. It was to become a modified version of the Soosh Trade Center with every Sushi Dog contained in its corresponding google spreadsheet. The project has since been put on hiatus.</p>
-                </div>
-            </a>
-        </div>
-        <div></div>
-        <div></div>
     </div>
 </div>
 

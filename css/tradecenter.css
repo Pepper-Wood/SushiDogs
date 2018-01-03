@@ -1,0 +1,172 @@
+/* ---------------------------- General Styling ----------------------------- */
+* {
+    box-sizing: border-box;
+}
+body {
+  background-image: url('../img/tradecenterBG.png');
+}
+h2 {
+    padding-top: 20px;
+    margin-top: 0;
+    font-family: 'HelloSunshineMarker';
+    text-align: center;
+}
+.container-fluid {
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+    background-color: rgba(255,255,255,0.7);
+    min-height: 1000px;
+}
+
+/* ---------------------------- Specific Styling ----------------------------- */
+.topImage {
+    display: block;
+    margin: 0 auto;
+    height: 100px;
+}
+.dropdown-button {
+    text-transform: none;
+}
+.dropdown-button .material-icons {
+    vertical-align: middle;
+}
+.flexTable {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 0 3em 0;
+    padding: 0;
+}
+.flexTable>div {
+    width: 50%;
+    box-sizing: border-box;
+    flex-grow: 1;
+    overflow: hidden;
+    list-style: none;
+}
+@media only screen and (min-width: 768px) {
+    .flexTable>div {
+        width: 25%;
+    }
+}
+.card {
+    margin: 10px;
+    transition: 0.5s all;
+    -webkit-transition: 0.3s all;
+}
+.card:hover, .description:hover {
+    -webkit-box-shadow: 0 6px 10px 0 rgba(0,0,0,0.14), 0 1px 18px 0 rgba(0,0,0,0.12), 0 3px 5px -1px rgba(0,0,0,0.3);
+    box-shadow: 0 6px 10px 0 rgba(0,0,0,0.14), 0 1px 18px 0 rgba(0,0,0,0.12), 0 3px 5px -1px rgba(0,0,0,0.3);
+}
+.topLeftButton {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.unofficial {
+    background-color: #ffe082;
+}
+.sooshImg {
+    width: 100%;
+    height: 250px;
+}
+.description {
+    padding: 5px;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    z-index: 10;
+    background-color: rgba(255,255,255,0.9);
+    -webkit-box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.2);
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.2);
+    transition: 0.3s all;
+}
+.description p {
+    margin: 0;
+    width: 100%;
+}
+.infoText {
+    opacity: 0.5;
+    font-size: 12px;
+}
+.object-fit_contain { object-fit: contain }
+.btn { padding: 0 10px !important; }
+
+.saleText {       color: #f44336 !important; }
+.saleBtn {        background-color: #f44336; }
+.saleBtn:hover {  background-color: #e57373; }
+.saleBtn:active { background-color: #d32f2f; }
+
+.tradeText {       color: #8bc34a !important; }
+.tradeBtn {        background-color: #8bc34a; }
+.tradeBtn:hover {  background-color: #aed581; }
+.tradeBtn:active { background-color: #689f38; }
+
+.contestText {       color: #2196f3 !important; }
+.contestBtn {        background-color: #2196f3; }
+.contestBtn:hover {  background-color: #64b5f6; }
+.contestBtn:active { background-color: #1976d2; }
+
+.caveText {       color: #9c27b0 !important; }
+.caveBtn {        background-color: #9c27b0; }
+.caveBtn:hover {  background-color: #ba68c8; }
+.caveBtn:active { background-color: #7b1fa2; }
+
+.selectedFilter {
+    background-color: #eceff1;
+    color: #37474f;
+}
+.selectedFilter:hover {  background-color: #FFFFFF; }
+.selectedFilter:active { background-color: #eceff1; }
+
+
+
+/* -------------------------------- Loader ---------------------------------- */
+#loaderBG{
+    position:fixed;
+    top:0;
+    left:0;
+    background:rgba(255,255,255,0.6);
+    z-index:999;
+    width:100%;
+    height:100%;
+}
+#loader {
+  color: #F6A897;
+  font-size: 20px;
+  margin: 100px auto;
+  width: 1em;
+  height: 1em;
+  border-radius: 50%;
+  position: absolute;
+  z-index: 1000;
+  top: 50%;
+  left: 50%;
+  text-indent: -9999em;
+  -webkit-animation: load4 1.3s infinite linear;
+  animation: load4 1.3s infinite linear;
+  -webkit-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  transform: translateZ(0);
+}
+@-webkit-keyframes load4 {
+  0%, 100% { box-shadow: 0 -3em 0 0.2em, 2em -2em 0 0em, 3em 0 0 -1em, 2em 2em 0 -1em, 0 3em 0 -1em, -2em 2em 0 -1em, -3em 0 0 -1em, -2em -2em 0 0; }
+  12.5% { box-shadow: 0 -3em 0 0, 2em -2em 0 0.2em, 3em 0 0 0, 2em 2em 0 -1em, 0 3em 0 -1em, -2em 2em 0 -1em, -3em 0 0 -1em, -2em -2em 0 -1em; }
+  25% { box-shadow: 0 -3em 0 -0.5em, 2em -2em 0 0, 3em 0 0 0.2em, 2em 2em 0 0, 0 3em 0 -1em, -2em 2em 0 -1em, -3em 0 0 -1em, -2em -2em 0 -1em; }
+  37.5% { box-shadow: 0 -3em 0 -1em, 2em -2em 0 -1em, 3em 0em 0 0, 2em 2em 0 0.2em, 0 3em 0 0em, -2em 2em 0 -1em, -3em 0em 0 -1em, -2em -2em 0 -1em; }
+  50% { box-shadow: 0 -3em 0 -1em, 2em -2em 0 -1em, 3em 0 0 -1em, 2em 2em 0 0em, 0 3em 0 0.2em, -2em 2em 0 0, -3em 0em 0 -1em, -2em -2em 0 -1em; }
+  62.5% { box-shadow: 0 -3em 0 -1em, 2em -2em 0 -1em, 3em 0 0 -1em, 2em 2em 0 -1em, 0 3em 0 0, -2em 2em 0 0.2em, -3em 0 0 0, -2em -2em 0 -1em; }
+  75% { box-shadow: 0em -3em 0 -1em, 2em -2em 0 -1em, 3em 0em 0 -1em, 2em 2em 0 -1em, 0 3em 0 -1em, -2em 2em 0 0, -3em 0em 0 0.2em, -2em -2em 0 0; }
+  87.5% { box-shadow: 0em -3em 0 0, 2em -2em 0 -1em, 3em 0 0 -1em, 2em 2em 0 -1em, 0 3em 0 -1em, -2em 2em 0 0, -3em 0em 0 0, -2em -2em 0 0.2em; }
+}
+@keyframes load4 {
+  0%, 100% { box-shadow: 0 -3em 0 0.2em, 2em -2em 0 0em, 3em 0 0 -1em, 2em 2em 0 -1em, 0 3em 0 -1em, -2em 2em 0 -1em, -3em 0 0 -1em, -2em -2em 0 0; }
+  12.5% { box-shadow: 0 -3em 0 0, 2em -2em 0 0.2em, 3em 0 0 0, 2em 2em 0 -1em, 0 3em 0 -1em, -2em 2em 0 -1em, -3em 0 0 -1em, -2em -2em 0 -1em; }
+  25% { box-shadow: 0 -3em 0 -0.5em, 2em -2em 0 0, 3em 0 0 0.2em, 2em 2em 0 0, 0 3em 0 -1em, -2em 2em 0 -1em, -3em 0 0 -1em, -2em -2em 0 -1em; }
+  37.5% { box-shadow: 0 -3em 0 -1em, 2em -2em 0 -1em, 3em 0em 0 0, 2em 2em 0 0.2em, 0 3em 0 0em, -2em 2em 0 -1em, -3em 0em 0 -1em, -2em -2em 0 -1em; }
+  50% { box-shadow: 0 -3em 0 -1em, 2em -2em 0 -1em, 3em 0 0 -1em, 2em 2em 0 0em, 0 3em 0 0.2em, -2em 2em 0 0, -3em 0em 0 -1em, -2em -2em 0 -1em; }
+  62.5% { box-shadow: 0 -3em 0 -1em, 2em -2em 0 -1em, 3em 0 0 -1em, 2em 2em 0 -1em, 0 3em 0 0, -2em 2em 0 0.2em, -3em 0 0 0, -2em -2em 0 -1em; }
+  75% { box-shadow: 0em -3em 0 -1em, 2em -2em 0 -1em, 3em 0em 0 -1em, 2em 2em 0 -1em, 0 3em 0 -1em, -2em 2em 0 0, -3em 0em 0 0.2em, -2em -2em 0 0; }
+  87.5% { box-shadow: 0em -3em 0 0, 2em -2em 0 -1em, 3em 0 0 -1em, 2em 2em 0 -1em, 0 3em 0 -1em, -2em 2em 0 0, -3em 0em 0 0, -2em -2em 0 0.2em; }
+}

@@ -1,0 +1,225 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Sushi Dogs - Visual Trade Center</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="img/favicon.png" type="image/png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Homemade+Apple">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="css/sandboxHeader.css">
+    <link rel="stylesheet" href="css/tradecenter.css">
+</head>
+<body>
+    <div id="headerSection"></div>
+
+    <div class="container-fluid">
+        <h2>Visual Trade Center</h2>
+        <ul>
+            <li>White BG indicates an approved listing on the <a target="_blank" href="http://fav.me/dbo9nha">Sushidogs Trade Center</a> or the <a target="_blank" href="http://fav.me/dbx1dc6">Wanderer's Cave</a>.</li>
+            <li>Yellow BG indicates this listing is not officially recognized yet by the Sushi Dog group. Be careful in the event these offers are scams.</li>
+        </ul>
+
+        <a id="designerMenuButton" class='dropdown-button btn' href='javascript:void(0)' data-activates='designerMenuDropdown'>Filter Designer By <i class="material-icons">expand_more</i></a>
+        <ul id='designerMenuDropdown' class='dropdown-content'>
+            <li><a id="spikedpeach">SpikedPeach</a></li>
+            <li><a id="other">Official Guest Artist / MYO</a></li>
+            <li class="divider"></li>
+            <li><a id="allDesigners">All Designers</a></li>
+        </ul>
+
+        <a id="typeMenuButton" class='dropdown-button btn' href='javascript:void(0)' data-activates='typeMenuDropdown'>Filter Type By <i class="material-icons">expand_more</i></a>
+        <ul id='typeMenuDropdown' class='dropdown-content'>
+            <li><a id="Dog">Sushi Dogs</a></li>
+            <li><a id="Cat">Sushi Cats</a></li>
+            <li class="divider"></li>
+            <li><a id="allTypes">All Types</a></li>
+        </ul>
+
+        <a id="offerMenuButton" class='dropdown-button btn' href='javascript:void(0)' data-activates='offerMenuDropdown'>Filter Offers By <i class="material-icons">expand_more</i></a>
+        <ul id='offerMenuDropdown' class='dropdown-content'>
+            <li><a id="trade" class="tradeText">Trade</a></li>
+            <li><a id="swap" class="tradeText">Soosh Swaps Only</a></li>
+            <li><a id="sale" class="saleText">Sale / Wanderer's Cave</a></li>
+            <li><a id="contest" class="contestText">Contest</a></li>
+            <li class="divider"></li>
+            <li><a id="allOffers">All Offers</a></li>
+        </ul>
+
+        <button class="btn" type="button" id="filterButton"><span class="glyphicon glyphicon-search"></span> Search</button>
+
+        <div id="loaderBG"></div>
+        <div id="loader"></div>
+        <div id="sooshOutput" style="display:none;"></div>
+    </div>
+
+    <!-- JavaScripts -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="js/sandboxHeader.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+    <script type="text/javascript" src="js/tabletop.min.js"></script>
+    <script src="js/taffy.js"></script>
+    <script type="text/javascript">
+    //var witchHexDBurl = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vT_NYE-THZ1CwSsRnuU7J4UF8WGt3gkTGn7vhMKVAqaSDTro1WEsShY5GGS-bMTGbMt5IL3MPpAdlL8/pubhtml';
+    var witchHexDBurl = 'https://docs.google.com/spreadsheets/d/1NoQID-mj55tU41ex6QcDSbUS_PHuyyeSm0i9shnjKBw/edit?usp=sharing';
+    var witchHexDB = TAFFY();
+    var tradeCenterUrl = 'https://docs.google.com/spreadsheets/d/1H2KbU3vP8l03VNP-x8fcB9T7nEXyTo12qCsYHcrp3dY/pubhtml';
+    var tradeCenter = TAFFY();
+    var designerMenuVal;
+    var typeMenuVal = "";
+    var offerMenuVal;
+    // -----------------------------------------------------------------------------------------------------------------------
+    function printSooshFlag(sp_userFlag, sp_sooshFlag, nonsp_userFlag, nonsp_sooshFlag, type_userFlag, type_sooshFlag, sale_userFlag, sale_sooshFlag, trade_userFlag, trade_sooshFlag, swap_userFlag, swap_sooshFlag, contest_userFlag, contest_sooshFlag) {
+        if (sp_userFlag) { // user wants a sp soosh, but this is not a sp soosh
+            return false;
+        } else if ((nonsp_userFlag) && (!nonsp_sooshFlag)) { // user wants a non-sp soosh, but this is not a non-sp soosh
+            return false;
+        } else {
+            if (type_userFlag == "allTypes") { return true;
+            } else if (type_userFlag == type_sooshFlag) { return true;
+            } else if (type_userFlag == "") {
+                if (sale_userFlag) { return sale_sooshFlag;
+                } else if (trade_userFlag) { return trade_sooshFlag;
+                } else if (swap_userFlag) { return swap_sooshFlag;
+                } else if (contest_userFlag) { return contest_sooshFlag;
+                } else { return true; } // user doesn't want second filter
+            } else {
+                return false;
+            }
+        }
+    }
+
+    // -----------------------------------------------------------------------------------------------------------------------
+    $(document).ready( function() {
+        Tabletop.init( { key: witchHexDBurl,
+                         callback: showWitchHexDBInfo,
+                         simpleSheet: true } );
+
+        $("#designerMenuDropdown li a").click(function() {
+            if ($(this).text() == "All Types") {
+                $("#designerMenuButton").html($(this).text() + " of Sooshes <i class='material-icons'>expand_more</i>");
+            } else {
+                $("#designerMenuButton").html($(this).text() + " Sooshes <i class='material-icons'>expand_more</i>");
+            }
+            $("#designerMenuButton").addClass("selectedFilter");
+            designerMenuVal = $(this).attr("id");
+        });
+        $("#typeMenuDropdown li a").click(function() {
+            $("#typeMenuButton").html($(this).text() + " <i class='material-icons'>expand_more</i>");
+            $("#typeMenuButton").addClass("selectedFilter");
+            typeMenuVal = $(this).attr("id");
+        });
+        $("#offerMenuDropdown li a").click(function() {
+            if ($(this).text() == "All Offers") {
+                $("#offerMenuButton").html($(this).text() + " <i class='material-icons'>expand_more</i>");
+            } else {
+                $("#offerMenuButton").html($(this).text() + " Offers <i class='material-icons'>expand_more</i>");
+            }
+            $("#offerMenuButton").addClass("selectedFilter");
+            offerMenuVal = $(this).attr("id");
+        });
+    });
+
+    // -----------------------------------------------------------------------------------------------------------------------
+    function showWitchHexDBInfo(data, tabletop) {
+        $.each( tabletop.sheets("Sheet1").all(), function(i, soosh) {
+            witchHexDB.insert({ "creatorType":soosh.creatorType,
+                                "sooshType":soosh.sooshType,
+                                "sooshName":soosh.SooshName,
+                                "masterlistUrl":soosh.MasterlistURL,
+                                "imgUrl":soosh.ImgURL
+            });
+        });
+        Tabletop.init( { key: tradeCenterUrl,
+                         callback: showTradeCenterInfo,
+                         simpleSheet: true } );
+    }
+
+    // -----------------------------------------------------------------------------------------------------------------------
+    function showTradeCenterInfo(data, tabletop) {
+        $.each( tabletop.sheets("Sheet1").all(), function(i, soosh) {
+            tradeCenter.insert({"sooshName":soosh.sooshName,
+                                "lookingFor":soosh.lookingFor,
+                                "swap":soosh.swap,
+                                "seeking":soosh.seeking,
+                                "journalLink":soosh.journalLink,
+                                "removeDate":soosh.removeDate
+            });
+        });
+        loadTradeCenterHTML();
+    }
+
+    // -----------------------------------------------------------------------------------------------------------------------
+    function loadTradeCenterHTML() {
+        var sp_check = (designerMenuVal == "spikedpeach");
+        var nonsp_check = (designerMenuVal == "other");
+        var sale_check = (offerMenuVal == "sale");
+        var trade_check = (offerMenuVal == "trade");
+        var swap_check = (offerMenuVal == "swap");
+        var contest_check = (offerMenuVal == "contest");
+
+        /* RESULTING HTML LAYOUT
+        <div class='flexTable'>
+            <div class='card'>
+                <a target='_blank' href='soosh.journalLink'>
+                    <img class='sooshImg object-fit_contain' src='soosh.imgUrl'>
+                    <button type='button' class='btn topLeftButton saleBtn'>Sale</button>
+                    <div class='description'>
+                        <a target='_blank' class='sooshDatabaseURL' href='soosh.masterlistUrl'>
+                            <p class='description_content'>soosh.sooshName</p>
+                        </a>
+                        <p class='infoText'>MYO Sushi Dog</p>
+                        <p class='lookingFor_content'><b>LF:</b> soosh.seeking</p>
+                    </div>
+                </a>
+            </div>
+            ...
+        </div>
+        */
+
+        var sooshOutput = "<div class='flexTable'>";
+        var currSoosh;
+        tradeCenter().order("sooshName asec").each(function (soosh) {
+            currSoosh = witchHexDB({sooshName:soosh.sooshName}).first();
+            if (printSooshFlag(sp_check, (currSoosh.creatorType == "SP"), nonsp_check, (!(currSoosh.creatorType == "SP")), typeMenuVal, (currSoosh.sooshType), sale_check, (((soosh.lookingFor).includes("sale")) || ((soosh.lookingFor).includes("cave"))), trade_check, ((soosh.lookingFor).includes("trade")), swap_check, ((soosh.swap).includes("x")), contest_check, ((soosh.lookingFor).includes("contest")))) {
+                sooshOutput += "<div><div class='card";
+                if ((soosh.removeDate == "") && (!(soosh.lookingFor).includes("cave"))) { sooshOutput += " unofficial"; }
+                sooshOutput += "'><a target='_blank' href='";
+                if ((soosh.lookingFor).includes("cave")) {
+                    sooshOutput += "http://fav.me/dbx1dc6";
+                } else {
+                    sooshOutput += soosh.journalLink;
+                }
+                sooshOutput += "'><img class='sooshImg object-fit_contain' src='" + currSoosh.imgUrl + "'><button type='button' class='btn topLeftButton "
+                if ((soosh.lookingFor).includes("sale")) { sooshOutput += "saleBtn'>Sale"; }
+                if ((soosh.lookingFor).includes("trade")) { sooshOutput += "tradeBtn'>Trade"; }
+                if ((soosh.lookingFor).includes("contest")) { sooshOutput += "contestBtn'>Contest"; }
+                if ((soosh.lookingFor).includes("cave")) { sooshOutput += "caveBtn'>Cave"; }
+                sooshOutput += "</button><div class='description'>";
+                sooshOutput += "<a target='_blank' class='sooshDatabaseURL' href='" + currSoosh.masterlistUrl + "'><p class='description_content'>" + soosh.sooshName + "</p></a>";
+                sooshOutput += "<p class='infoText'>";
+                if (currSoosh.creatorType == "SP") { sooshOutput += "SpikedPeach"; }
+                else if (currSoosh.creatorType == "GA") { sooshOutput += "Guest Artist"; }
+                else { sooshOutput += currSoosh.creatorType; }
+                sooshOutput += " Sushi " + currSoosh.sooshType + "</p>";
+                sooshOutput += "<p class='lookingFor_content'><b>LF:</b> " + soosh.seeking + "</p></div></a></div></div>";
+            }
+        });
+        sooshOutput += "<div></div><div></div><div></div></div>";
+        $("#loaderBG").fadeOut();
+        $("#loader").toggle();
+        $("#sooshOutput").html(sooshOutput);
+        $("#sooshOutput").fadeIn();
+    }
+
+    // -----------------------------------------------------------------------------------------------------------------------
+    $("#filterButton").click(function() {
+        $("#loaderBG").toggle();
+        $("#loader").toggle();
+        loadTradeCenterHTML();
+    });
+    </script>
+</body>
+</html>

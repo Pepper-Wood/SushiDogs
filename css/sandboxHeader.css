@@ -1,13 +1,31 @@
+@font-face {
+    font-family: HelloSunshineOrnaments;
+    src: url("../fonts/HelloSunshine_ornaments.otf") format("opentype");
+}
+@font-face {
+    font-family: HelloSunshine;
+    src: url("../fonts/HelloSunshine.otf") format("opentype");
+}
+@font-face {
+    font-family: HelloSunshine;
+    font-style: italic;
+    src: url("../fonts/HelloSunshineItalic.otf") format("opentype");
+}
+@font-face {
+    font-family: HelloSunshineMarker;
+    src: url("../fonts/HelloSunshineMarker.otf") format("opentype");
+}
 header {
     background-image: url(http://www.kathryndipippo.com/SooshARPG/img/tilebg2_small.png);
     color: rgba(0,0,0,0.87);
     font-size: 20px;
     display: flex;
+    align-items: center;
     position: fixed;
     top: 0;
     width: 100%;
     z-index: 1000;
-    padding: 0.5em 2em;
+    padding: 0 2em;
     margin: 0 auto;
     -webkit-box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.2);
     box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.2);
@@ -27,11 +45,19 @@ header i {
 }
 .headerIcon {
     padding: 0 10px;
+    height: 100%;
     vertical-align: middle;
 }
 .headerLink, .headerLink:hover {
+    font-family: 'HelloSunshine';
+    font-size: 40px;
+    height: 50px;
     color: rgba(0,0,0,0.87);
     text-decoration: none;
+}
+.headerMarker {
+    font-family: 'HelloSunshineMarker';
+    font-size: 25px;
 }
 .headerOverlay {
     display: none;
@@ -52,12 +78,15 @@ header i {
     -webkit-transition: 0.5s all;
 }
 .sidebarTitle {
-    font-size: 20px;
-    padding-left: 16px;
-    line-height: 56px;
+    font-family: 'HelloSunshineMarker';
+    font-size: 30px;
+    padding: 16px;
+    padding-top: 30px;
+    margin-bottom: 0;
 }
 .sidebarNav {
     padding: 0;
+    margin: 0;
 }
 .sidebarNav>li {
     list-style: none;
