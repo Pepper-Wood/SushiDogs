@@ -58,7 +58,7 @@
                     <a id="offerMenuButton" class='dropdown-button btn' href='javascript:void(0)' data-activates='offerMenuDropdown'>Filter Offers By <i class="material-icons">expand_more</i></a>
                     <ul id='offerMenuDropdown' class='dropdown-content'>
                         <li><a id="trade" class="tradeText">Trade</a></li>
-                        <li><a id="swap" class="tradeText">Soosh Swaps Only</a></li>
+                        <li><a id="swap" class="tradeText">Soosh Swaps</a></li>
                         <li><a id="sale" class="saleText">Sale / Wanderer's Cave</a></li>
                         <li><a id="contest" class="contestText">Contest</a></li>
                         <li class="divider"></li>
@@ -92,11 +92,13 @@
     var typeMenuVal = "allTypes";
     var offerMenuVal = "allOffers";
     // -----------------------------------------------------------------------------------------------------------------------
-    function printSooshFlag(sooshRarity, sooshDesigner, sooshType, sooshOffer) {
+    function printSooshFlag(sooshRarity, sooshDesigner, sooshType, sooshOffer, sooshSwapFlag) {
+        if ((sooshOffer).includes("cave")) { sooshOffer += ", sale"; }
         if ((rarityMenuVal != "allRarities") && (rarityMenuVal != sooshRarity)) { return false; }
         if ((designerMenuVal != "allDesigners") && (designerMenuVal != sooshDesigner)) { return false; }
         if ((typeMenuVal != "allTypes") && (typeMenuVal != sooshType)) { return false; }
-        if ((offerMenuVal != "allOffers") && (!(sooshOffer).includes(offerMenuVal))) { return false; }
+        if ((offerMenuVal == "swap") && (!sooshSwapFlag)) { return false; }
+        if ((offerMenuVal != "swap") && (offerMenuVal != "allOffers") && (!(sooshOffer).includes(offerMenuVal))) { return false; }
         return true;
     }
 
@@ -206,7 +208,7 @@
         var errorFlag = true;
         tradeCenter().order("sooshName asec").each(function (soosh) {
             currSoosh = witchHexDB({sooshName:soosh.sooshName}).first();
-            if (printSooshFlag(currSoosh.rarity, currSoosh.creatorType, currSoosh.sooshType, soosh.lookingFor)) {
+            if (printSooshFlag(currSoosh.rarity, currSoosh.creatorType, currSoosh.sooshType, soosh.lookingFor, (soosh.swap=="x"))) {
                 sooshOutput += "<div><div class='card";
                 if (((soosh.removeDate == "") && (!(soosh.lookingFor).includes("cave"))) || (beforeCurrentDate(soosh.removeDate))) { sooshOutput += " unofficial"; }
                 sooshOutput += "'><a target='_blank' href='";
