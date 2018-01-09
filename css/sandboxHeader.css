@@ -16,7 +16,7 @@
     src: url("../fonts/HelloSunshineMarker.otf") format("opentype");
 }
 header {
-    background-image: url(http://www.kathryndipippo.com/SooshARPG/img/tilebg2_small.png);
+    background-color: rgba(255,255,255,0.5);
     color: rgba(0,0,0,0.87);
     font-size: 20px;
     display: flex;
@@ -62,6 +62,7 @@ header i {
 .headerOverlay {
     display: none;
     position: fixed;
+    top: 0;
     height: 100%;
     width: 100%;
     background-color: rgba(0,0,0,.5);
@@ -72,6 +73,7 @@ header i {
     width: 30%;
     height: 100%;
     position: fixed;
+    top: 0;
     left: -30%;
     z-index: 1002;
     transition: 0.5s all;
@@ -91,6 +93,11 @@ header i {
 .sidebarNav>li {
     list-style: none;
     text-align: left;
+    -webkit-transition: background-color 200ms linear;
+    -moz-transition: background-color 200ms linear;
+    -o-transition: background-color 200ms linear;
+    -ms-transition: background-color 200ms linear;
+    transition: background-color 200ms linear;
 }
 .sidebarNav>li>a {
     color: rgba(0,0,0,0.87);
@@ -106,6 +113,13 @@ header i {
 }
 .sidebarNav>li.active>a, .sidebarNav>li:hover>a {
     color: #757575;
+}
+.sidenavSmallTitle, .sidenavSmallTitle:hover {
+    background-color: #FFF !important;
+    color: rgba(0,0,0,0.5);
+    font-size: 14px;
+    margin-left: 10px;
+    margin-bottom: 5px;
 }
 #sidebarTrigger {
     cursor: pointer;

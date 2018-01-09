@@ -10,11 +10,8 @@
     <link rel="stylesheet" href="css/sandboxHeader.css">
     <style>
     body {
-        background-image: url(img/tradecenterBG.png);
+        background-color: #f5f2f0;
         color: rgba(0,0,0,0.87);
-    }
-    .container-fluid {
-        background-color: rgba(255, 255, 255,0.8);
     }
     h4 {
         text-align: center;
@@ -66,14 +63,10 @@
     .logoImage {
         z-index: 10;
         position: absolute;
-        bottom: 0;
+        top: 100px;
         height: 200px;
         width: 100%;
         object-fit: contain;
-        -webkit-box-shadow: 0px 0px 107px 0px rgba(255,255,255,1);
-        -moz-box-shadow: 0px 0px 107px 0px rgba(255,255,255,1);
-        box-shadow: 0px 0px 107px 0px rgba(255,255,255,1);
-        background-color: rgba(255,255,255,0.5);
     }
     .updateDate {
         opacity: 0.5;
@@ -93,18 +86,18 @@
 <body>
 <div id="headerSection"></div>
 
+<div class="topImages">
+    <img class="topImage" src="img/tradecenterBG.png">
+    <img class="logoImage" src="img/sooshLogo.png">
+</div>
 <div class="container-fluid">
-    <div class="topImages">
-        <img class="topImage" src="img/sooshBanner.png">
-        <img class="logoImage" src="img/sooshLogo.png">
-    </div>
     <p><b>Sushi Dogs</b>, also called <b>Sooshes</b>, are tiny canine creatures that resemble foods and drinks from around the globe. Sushi Dogs are named as such because they are roughly the size of a single piece of sushi. They are iconically known for having closed eyes, colorful cheeks, and swirl bandanas. The Sushi Dog online community consists of collectors and artists who enjoy making artwork of and trading Sushi Dog characters; only authorized moderators can create official Sushi Dogs, which adds to their rarity.</p>
     <p>In April 2017, I became a moderator of the deviantArt groups and extended my web development skills through projects for two different facets of the community:</p>
     <ul class="bulletedList">
         <li><a target="_blank" href="https://sushidogs.deviantart.com/"><b>Sushidogs</b></a> - The original deviantArt group that accepts artwork of Sushi Dogs</li>
         <li><a target="_blank" href="https://soosharpg.deviantart.com/"><b>SooshARPG</b></a> - The Art Role-Playing Game counterpart to Sushidogs. Members in this deviantArt group can participate in a wide assortment of activities where they can gather items and boost their character's stats through art prompts.</li>
     </ul>
-    <p>Sushi Dogs were created by <a href="https://spikedpeach.deviantart.com/">Jess / SpikedPeach</a> and are co-lead by <a href="https://ufokitten.deviantart.com/">Bryanna "Noxi" Davidson / UFOKitten</a>.</p>
+    <p>Sushi Dogs were created by <a target="_blank" href="https://spikedpeach.deviantart.com/">Jess / SpikedPeach</a><a target="_blank" href="https://blushsprout.com/"> / blushsprout</a> and are co-lead by <a target="_blank" href="https://ufokitten.deviantart.com/">Bryanna "Noxi" Davidson / UFOKitten</a>.</p>
     <div class="flexTable3">
         <div class="card">
             <a href="tradecenter.html">
@@ -113,9 +106,27 @@
                     <span class="card-title">Soosh Trade Center</span>
                 </div>
                 <div class="card-content">
-                    <p class="updateDate">Last Updated: 1/2/2018</p>
+                    <p class="updateDate">Last Updated: 1/8/2018</p>
                     <p>The Sushi Dogs' Trade Center on the official deviantArt group does not feature images of the sooshes put available. I made this tool for myself as an easy way to gather every on-going trade (and not just officially approved ones), but it has since been shared by members of the community.</p><br>
                     <p>I also collaborated with WitchHex on deviantArt to make the google spreadsheet easier to modify. Added new filter options, added Wanderer's Cave feature, made spreadsheet not require each soosh's URL and image URL to be repasted every time and instead pulls this information from WitchHex's massive soosh spreadsheet</p>
+                </div>
+            </a>
+        </div>
+        <div class="card">
+            <a href="http://www.kathryndipippo.com/SooshARPG2">
+                <div class="card-image">
+                    <img src="https://img02.deviantart.net/f4e3/i/2017/157/1/c/sooshbanner_ver2_by_pepper_wood-dbbsovb.png">
+                    <span class="card-title">SooshARPG 2.0</span>
+                </div>
+                <div class="card-content">
+                    <p class="updateDate">Last Updated: 1/8/2017</p>
+                    <p>While working on modifying the moderator tools and the Kumo tracker repositories, I made a new repository dedicated to recreating the tools from scratch. The key hightlights so far:</p>
+                    <ul class="bulletedList">
+                        <li>There is 1 master spreadsheet that can be editted by the mods for keeping track of important statistics.</li>
+                        <li>This spreadsheet contains links to individual members' spreadsheets for their own trackers.</li>
+                        <li>Each character's page starts with a standard template that is populated from either just the moderator spreadsheet or both the mod + member spreadsheets</li>
+                        <li>Moderator tools linked are now password protected with pseudo-security: I've hashed the correct password and hard-coded this into the JS, along with the hashing function (due to GitHub's lack of server-side restrictions).</li>
+                    </ul>
                 </div>
             </a>
         </div>
@@ -152,24 +163,6 @@
                 <div class="card-content">
                     <p class="updateDate">Last Updated: 5/8/2017</p>
                     <p>When I became a moderator for SooshARPG in April 2017, one of my first tasks assigned to me was to perform "dailies". This meant: if a member requested their soosh to perform a skill (like hunting, fishing, etc.), then a moderator comments whether the soosh was successful and gives items/experience points. This task was really tedious to do by hand, so I immediately went to make a roller myself. This repo has since expanded into other moderator tools. This project is on hiatus as I have continued my work in SooshARPG 2.0.</p>
-                </div>
-            </a>
-        </div>
-        <div class="card">
-            <a href="http://www.kathryndipippo.com/SooshARPG2">
-                <div class="card-image">
-                    <img src="https://img02.deviantart.net/f4e3/i/2017/157/1/c/sooshbanner_ver2_by_pepper_wood-dbbsovb.png">
-                    <span class="card-title">SooshARPG 2.0</span>
-                </div>
-                <div class="card-content">
-                    <p class="updateDate">Last Updated: 10/12/2017</p>
-                    <p>While working on modifying the moderator tools and the Kumo tracker repositories, I made a new repository dedicated to recreating the tools from scratch. The key hightlights so far:</p>
-                    <ul class="bulletedList">
-                        <li>There is 1 master spreadsheet that can be editted by the mods for keeping track of important statistics.</li>
-                        <li>This spreadsheet contains links to individual members' spreadsheets for their own trackers.</li>
-                        <li>Each character's page starts with a standard template that is populated from either just the moderator spreadsheet or both the mod + member spreadsheets</li>
-                        <li>Moderator tools linked are now password protected with pseudo-security: I've hashed the correct password and hard-coded this into the JS, along with the hashing function (due to GitHub's lack of server-side restrictions).</li>
-                    </ul>
                 </div>
             </a>
         </div>

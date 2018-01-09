@@ -7,17 +7,19 @@ body {
 }
 h2 {
     padding-top: 20px;
-    margin-top: 0;
     font-family: 'HelloSunshineMarker';
     text-align: center;
 }
-.container-fluid {
+.centralContainer {
     padding-right: 15px;
     padding-left: 15px;
     margin-right: auto;
     margin-left: auto;
-    background-color: rgba(255,255,255,0.7);
     min-height: 1000px;
+}
+.horizontalFlex {
+    display: flex;
+    justify-content: space-between;
 }
 
 /* ---------------------------- Specific Styling ----------------------------- */
@@ -63,6 +65,11 @@ h2 {
     position: absolute;
     top: 0;
     left: 0;
+}
+.topRightWarning {
+    position: absolute;
+    top: 0;
+    right: 0;
 }
 .unofficial {
     background-color: #ffe082;
@@ -119,6 +126,17 @@ h2 {
 }
 .selectedFilter:hover {  background-color: #FFFFFF; }
 .selectedFilter:active { background-color: #eceff1; }
+.topInfoTile {
+    padding: 10px;
+    margin: 10px;
+}
+.topInfoTile>p {
+    margin: 0;
+}
+.errorText {
+    background-color: #ffcece;
+    color: #c60000;
+}
 
 
 

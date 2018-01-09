@@ -9,66 +9,67 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Homemade+Apple">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <!-- <link rel="stylesheet" href="css/sandboxHeader.css"> -->
-    <!-- HEADER IS REMOVED UNTIL THE MODERATOR TOOLS ARE PROPERLY CONFIGURED FOR PUBLIC VIEWING -->
-    <style>
-    @font-face {
-        font-family: HelloSunshineOrnaments;
-        src: url("../fonts/HelloSunshine_ornaments.otf") format("opentype");
-    }
-    @font-face {
-        font-family: HelloSunshine;
-        src: url("../fonts/HelloSunshine.otf") format("opentype");
-    }
-    @font-face {
-        font-family: HelloSunshine;
-        font-style: italic;
-        src: url("../fonts/HelloSunshineItalic.otf") format("opentype");
-    }
-    @font-face {
-        font-family: HelloSunshineMarker;
-        src: url("../fonts/HelloSunshineMarker.otf") format("opentype");
-    }
-    </style>
+    <link rel="stylesheet" href="css/sandboxHeader.css">
     <link rel="stylesheet" href="css/tradecenter.css">
 </head>
 <body>
     <div id="headerSection"></div>
 
-    <div class="container-fluid">
-        <h2>Visual Trade Center</h2>
-        <ul>
-            <li>White BG indicates an approved listing on the <a target="_blank" href="http://fav.me/dbo9nha">Sushidogs Trade Center</a> or the <a target="_blank" href="http://fav.me/dbx1dc6">Wanderer's Cave</a>.</li>
-            <li>Yellow BG indicates this listing is not officially recognized yet by the Sushi Dog group. Be careful in the event these offers are scams.</li>
-        </ul>
+    <div class="centralContainer">
+        <h2 style="margin-top:100px">Visual Trade Center</h2>
+        <div class="card topInfoTile">
+            <p>White BG indicates an approved listing on the <a target="_blank" href="http://fav.me/dbo9nha">Sushidogs Trade Center</a> or the <a target="_blank" href="http://fav.me/dbx1dc6">Wanderer's Cave</a>.</p>
+            <p>Yellow BG indicates this listing is not officially recognized yet by the Sushi Dog group. Be careful in the event these offers are scams.</p>
+        </div>
 
-        <a id="designerMenuButton" class='dropdown-button btn' href='javascript:void(0)' data-activates='designerMenuDropdown'>Filter Designer By <i class="material-icons">expand_more</i></a>
-        <ul id='designerMenuDropdown' class='dropdown-content'>
-            <li><a id="spikedpeach">SpikedPeach</a></li>
-            <li><a id="other">Official Guest Artist / MYO</a></li>
-            <li class="divider"></li>
-            <li><a id="allDesigners">All Designers</a></li>
-        </ul>
+        <div class="card topInfoTile">
+            <div class="horizontalFlex">
+                <div>
+                    <a id="rarityMenuButton" class='dropdown-button btn' href='javascript:void(0)' data-activates='rarityMenuDropdown'>Filter Rarity By <i class="material-icons">expand_more</i></a>
+                    <ul id='rarityMenuDropdown' class='dropdown-content'>
+                        <li><a id="Common">Common</a></li>
+                        <li><a id="Uncommon">Uncommon</a></li>
+                        <li><a id="Rare">Rare</a></li>
+                        <li><a id="Exclusive">Exclusive</a></li>
+                        <li class="divider"></li>
+                        <li><a id="allRarities">All Rarities</a></li>
+                    </ul>
 
-        <a id="typeMenuButton" class='dropdown-button btn' href='javascript:void(0)' data-activates='typeMenuDropdown'>Filter Type By <i class="material-icons">expand_more</i></a>
-        <ul id='typeMenuDropdown' class='dropdown-content'>
-            <li><a id="Dog">Sushi Dogs</a></li>
-            <li><a id="Cat">Sushi Cats</a></li>
-            <li class="divider"></li>
-            <li><a id="allTypes">All Types</a></li>
-        </ul>
+                    <a id="designerMenuButton" class='dropdown-button btn' href='javascript:void(0)' data-activates='designerMenuDropdown'>Filter Designer By <i class="material-icons">expand_more</i></a>
+                    <ul id='designerMenuDropdown' class='dropdown-content'>
+                        <li><a id="SP">SpikedPeach</a></li>
+                        <li><a id="GA">Official Guest Artist</a></li>
+                        <li><a id="MYO">MYO</a></li>
+                        <li class="divider"></li>
+                        <li><a id="allDesigners">All Designers</a></li>
+                    </ul>
 
-        <a id="offerMenuButton" class='dropdown-button btn' href='javascript:void(0)' data-activates='offerMenuDropdown'>Filter Offers By <i class="material-icons">expand_more</i></a>
-        <ul id='offerMenuDropdown' class='dropdown-content'>
-            <li><a id="trade" class="tradeText">Trade</a></li>
-            <li><a id="swap" class="tradeText">Soosh Swaps Only</a></li>
-            <li><a id="sale" class="saleText">Sale / Wanderer's Cave</a></li>
-            <li><a id="contest" class="contestText">Contest</a></li>
-            <li class="divider"></li>
-            <li><a id="allOffers">All Offers</a></li>
-        </ul>
+                    <a id="typeMenuButton" class='dropdown-button btn' href='javascript:void(0)' data-activates='typeMenuDropdown'>Filter Type By <i class="material-icons">expand_more</i></a>
+                    <ul id='typeMenuDropdown' class='dropdown-content'>
+                        <li><a id="Dog">Sushi Dogs</a></li>
+                        <li><a id="Triptych">Triptychs</a></li>
+                        <li><a id="Biheaded">Biheadeds</a></li>
+                        <li><a id="Cerberal">Cerberals</a></li>
+                        <li><a id="Cat">Sushi Cats</a></li>
+                        <li class="divider"></li>
+                        <li><a id="allTypes">All Types</a></li>
+                    </ul>
 
-        <button class="btn" type="button" id="filterButton"><span class="glyphicon glyphicon-search"></span> Search</button>
+                    <a id="offerMenuButton" class='dropdown-button btn' href='javascript:void(0)' data-activates='offerMenuDropdown'>Filter Offers By <i class="material-icons">expand_more</i></a>
+                    <ul id='offerMenuDropdown' class='dropdown-content'>
+                        <li><a id="trade" class="tradeText">Trade</a></li>
+                        <li><a id="swap" class="tradeText">Soosh Swaps Only</a></li>
+                        <li><a id="sale" class="saleText">Sale / Wanderer's Cave</a></li>
+                        <li><a id="contest" class="contestText">Contest</a></li>
+                        <li class="divider"></li>
+                        <li><a id="allOffers">All Offers</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <button class="btn" type="button" id="filterButton"><span class="glyphicon glyphicon-search"></span> Search</button>
+                </div>
+            </div>
+        </div>
 
         <div id="loaderBG"></div>
         <div id="loader"></div>
@@ -77,38 +78,33 @@
 
     <!-- JavaScripts -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <!-- <script src="js/sandboxHeader.js"></script> -->
+    <script src="js/sandboxHeader.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
     <script type="text/javascript" src="js/tabletop.min.js"></script>
     <script src="js/taffy.js"></script>
     <script type="text/javascript">
-    //var witchHexDBurl = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vT_NYE-THZ1CwSsRnuU7J4UF8WGt3gkTGn7vhMKVAqaSDTro1WEsShY5GGS-bMTGbMt5IL3MPpAdlL8/pubhtml';
     var witchHexDBurl = 'https://docs.google.com/spreadsheets/d/1NoQID-mj55tU41ex6QcDSbUS_PHuyyeSm0i9shnjKBw/edit?usp=sharing';
     var witchHexDB = TAFFY();
     var tradeCenterUrl = 'https://docs.google.com/spreadsheets/d/1H2KbU3vP8l03VNP-x8fcB9T7nEXyTo12qCsYHcrp3dY/pubhtml';
     var tradeCenter = TAFFY();
-    var designerMenuVal;
-    var typeMenuVal = "";
-    var offerMenuVal;
+    var rarityMenuVal = "allRarities";
+    var designerMenuVal = "allDesigners";
+    var typeMenuVal = "allTypes";
+    var offerMenuVal = "allOffers";
     // -----------------------------------------------------------------------------------------------------------------------
-    function printSooshFlag(sp_userFlag, sp_sooshFlag, nonsp_userFlag, nonsp_sooshFlag, type_userFlag, type_sooshFlag, sale_userFlag, sale_sooshFlag, trade_userFlag, trade_sooshFlag, swap_userFlag, swap_sooshFlag, contest_userFlag, contest_sooshFlag) {
-        if (sp_userFlag) { // user wants a sp soosh, but this is not a sp soosh
-            return false;
-        } else if ((nonsp_userFlag) && (!nonsp_sooshFlag)) { // user wants a non-sp soosh, but this is not a non-sp soosh
-            return false;
-        } else {
-            if (type_userFlag == "allTypes") { return true;
-            } else if (type_userFlag == type_sooshFlag) { return true;
-            } else if (type_userFlag == "") {
-                if (sale_userFlag) { return sale_sooshFlag;
-                } else if (trade_userFlag) { return trade_sooshFlag;
-                } else if (swap_userFlag) { return swap_sooshFlag;
-                } else if (contest_userFlag) { return contest_sooshFlag;
-                } else { return true; } // user doesn't want second filter
-            } else {
-                return false;
-            }
-        }
+    function printSooshFlag(sooshRarity, sooshDesigner, sooshType, sooshOffer) {
+        if ((rarityMenuVal != "allRarities") && (rarityMenuVal != sooshRarity)) { return false; }
+        if ((designerMenuVal != "allDesigners") && (designerMenuVal != sooshDesigner)) { return false; }
+        if ((typeMenuVal != "allTypes") && (typeMenuVal != sooshType)) { return false; }
+        if ((offerMenuVal != "allOffers") && (!(sooshOffer).includes(offerMenuVal))) { return false; }
+        return true;
+    }
+
+    // -----------------------------------------------------------------------------------------------------------------------
+    function beforeCurrentDate(sDate) {
+        var sooshDate = new Date(sDate);
+        var today = new Date();
+        return sooshDate < today;
     }
 
     // -----------------------------------------------------------------------------------------------------------------------
@@ -117,6 +113,11 @@
                          callback: showWitchHexDBInfo,
                          simpleSheet: true } );
 
+         $("#rarityMenuDropdown li a").click(function() {
+             $("#rarityMenuButton").html($(this).text()+  "<i class='material-icons'>expand_more</i>");
+             $("#rarityMenuButton").addClass("selectedFilter");
+             rarityMenuVal = $(this).attr("id");
+         });
         $("#designerMenuDropdown li a").click(function() {
             if ($(this).text() == "All Types") {
                 $("#designerMenuButton").html($(this).text() + " of Sooshes <i class='material-icons'>expand_more</i>");
@@ -147,9 +148,10 @@
         $.each( tabletop.sheets("Sheet1").all(), function(i, soosh) {
             witchHexDB.insert({ "creatorType":soosh.creatorType,
                                 "sooshType":soosh.sooshType,
-                                "sooshName":soosh.SooshName,
-                                "masterlistUrl":soosh.MasterlistURL,
-                                "imgUrl":soosh.ImgURL
+                                "rarity":soosh.rarity,
+                                "sooshName":soosh.sooshName,
+                                "masterlistUrl":soosh.masterlistURL,
+                                "imgUrl":soosh.imgURL
             });
         });
         Tabletop.init( { key: tradeCenterUrl,
@@ -201,30 +203,53 @@
 
         var sooshOutput = "<div class='flexTable'>";
         var currSoosh;
+        var errorFlag = true;
         tradeCenter().order("sooshName asec").each(function (soosh) {
             currSoosh = witchHexDB({sooshName:soosh.sooshName}).first();
-            if (printSooshFlag(sp_check, (currSoosh.creatorType == "SP"), nonsp_check, (!(currSoosh.creatorType == "SP")), typeMenuVal, (currSoosh.sooshType), sale_check, (((soosh.lookingFor).includes("sale")) || ((soosh.lookingFor).includes("cave"))), trade_check, ((soosh.lookingFor).includes("trade")), swap_check, ((soosh.swap).includes("x")), contest_check, ((soosh.lookingFor).includes("contest")))) {
+            if (printSooshFlag(currSoosh.rarity, currSoosh.creatorType, currSoosh.sooshType, soosh.lookingFor)) {
                 sooshOutput += "<div><div class='card";
-                if ((soosh.removeDate == "") && (!(soosh.lookingFor).includes("cave"))) { sooshOutput += " unofficial"; }
+                if (((soosh.removeDate == "") && (!(soosh.lookingFor).includes("cave"))) || (beforeCurrentDate(soosh.removeDate))) { sooshOutput += " unofficial"; }
                 sooshOutput += "'><a target='_blank' href='";
                 if ((soosh.lookingFor).includes("cave")) {
                     sooshOutput += "http://fav.me/dbx1dc6";
                 } else {
                     sooshOutput += soosh.journalLink;
                 }
-                sooshOutput += "'><img class='sooshImg object-fit_contain' src='" + currSoosh.imgUrl + "'><button type='button' class='btn topLeftButton "
-                if ((soosh.lookingFor).includes("sale")) { sooshOutput += "saleBtn'>Sale"; }
-                if ((soosh.lookingFor).includes("trade")) { sooshOutput += "tradeBtn'>Trade"; }
-                if ((soosh.lookingFor).includes("contest")) { sooshOutput += "contestBtn'>Contest"; }
-                if ((soosh.lookingFor).includes("cave")) { sooshOutput += "caveBtn'>Cave"; }
-                sooshOutput += "</button><div class='description'>";
+                sooshOutput += "'><img class='sooshImg object-fit_contain' src='" + currSoosh.imgUrl + "'><div class='topLeftButton'>"
+                if ((soosh.lookingFor).includes("sale")) { sooshOutput += "<button type='button' class='btn saleBtn'>Sale</button>"; }
+                if ((soosh.lookingFor).includes("trade")) { sooshOutput += "<button type='button' class='btn tradeBtn'>Trade</button>"; }
+                if ((soosh.lookingFor).includes("contest")) { sooshOutput += "<button type='button' class='btn contestBtn'>Contest</button>"; }
+                if ((soosh.lookingFor).includes("cave")) { sooshOutput += "<button type='button' class='btn caveBtn'>Cave</button><button type='button' class='btn saleBtn'>Sale</button>"; }
+                sooshOutput += "</div>";
+                if ((currSoosh.rarity != "Common") && (currSoosh.rarity != "Uncommon") && (currSoosh.rarity != "Rare") && (currSoosh.rarity != "Exclusive")) {
+                    sooshOutput += "<div class='topRightWarning errorText'>MISSING RARITY</div>"
+                    if (errorFlag) {
+                        alert("Sooshes are missing rarities");
+                        errorFlag = false;
+                    }
+                }
+                sooshOutput += "<div class='description'>";
                 sooshOutput += "<a target='_blank' class='sooshDatabaseURL' href='" + currSoosh.masterlistUrl + "'><p class='description_content'>" + soosh.sooshName + "</p></a>";
-                sooshOutput += "<p class='infoText'>";
-                if (currSoosh.creatorType == "SP") { sooshOutput += "SpikedPeach"; }
-                else if (currSoosh.creatorType == "GA") { sooshOutput += "Guest Artist"; }
-                else { sooshOutput += currSoosh.creatorType; }
-                sooshOutput += " Sushi " + currSoosh.sooshType + "</p>";
-                sooshOutput += "<p class='lookingFor_content'><b>LF:</b> " + soosh.seeking + "</p></div></a></div></div>";
+                sooshOutput += "<p class='infoText'>" + currSoosh.rarity + " ";
+                if (currSoosh.creatorType == "SP") { sooshOutput += "SpikedPeach "; }
+                else if (currSoosh.creatorType == "GA") { sooshOutput += "Guest Artist "; }
+                else { sooshOutput += currSoosh.creatorType + " "; }
+                if (currSoosh.sooshType != "Triptych") {
+                    sooshOutput += "Sushi ";
+                }
+                sooshOutput += currSoosh.sooshType + "</p><p class='lookingFor_content'><b>LF:</b> ";
+                if ((soosh.lookingFor).includes("cave")) {
+                    if (currSoosh.rarity == "Common") { sooshOutput += "$75"; }
+                    else if (currSoosh.rarity == "Uncommon") { sooshOutput += "$120"; }
+                    else if (currSoosh.rarity == "Rare") { sooshOutput += "$150"; }
+                    else if ((currSoosh.rarity == "Exclusive") || (currSoosh.sooshType == "Triptych") || (currSoosh.sooshType == "Biheaded") || (currSoosh.sooshType == "Cerberal")) {
+                        sooshOutput += "$175";
+                    } else if ((currSoosh.sooshType == "Cat") || (currSoosh.rarity == "mythical")) { sooshOutput += "$210-250 (depending on traits)"; }
+                    else { sooshOutput += "<span class='errorText'>NO RARITY SPECIFIED</span>"; }
+                } else {
+                    sooshOutput += soosh.seeking;
+                }
+                sooshOutput += "</p></div></a></div></div>";
             }
         });
         sooshOutput += "<div></div><div></div><div></div></div>";
