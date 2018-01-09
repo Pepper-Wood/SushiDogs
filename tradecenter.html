@@ -239,12 +239,12 @@
                 }
                 sooshOutput += currSoosh.sooshType + "</p><p class='lookingFor_content'><b>LF:</b> ";
                 if ((soosh.lookingFor).includes("cave")) {
-                    if (currSoosh.rarity == "Common") { sooshOutput += "$75"; }
-                    else if (currSoosh.rarity == "Uncommon") { sooshOutput += "$120"; }
-                    else if (currSoosh.rarity == "Rare") { sooshOutput += "$150"; }
+                    if ((currSoosh.sooshType == "Cat") || (currSoosh.rarity == "mythical")) { sooshOutput += "$210-250 (depending on traits)"; }
                     else if ((currSoosh.rarity == "Exclusive") || (currSoosh.sooshType == "Triptych") || (currSoosh.sooshType == "Biheaded") || (currSoosh.sooshType == "Cerberal")) {
                         sooshOutput += "$175";
-                    } else if ((currSoosh.sooshType == "Cat") || (currSoosh.rarity == "mythical")) { sooshOutput += "$210-250 (depending on traits)"; }
+                    } else if (currSoosh.rarity == "Common") { sooshOutput += "$75"; }
+                    else if (currSoosh.rarity == "Uncommon") { sooshOutput += "$120"; }
+                    else if (currSoosh.rarity == "Rare") { sooshOutput += "$150"; }
                     else { sooshOutput += "<span class='errorText'>NO RARITY SPECIFIED</span>"; }
                 } else {
                     sooshOutput += soosh.seeking;
