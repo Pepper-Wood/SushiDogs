@@ -18,8 +18,10 @@
     <div class="centralContainer">
         <h2 style="margin-top:100px">Visual Trade Center</h2>
         <div class="card topInfoTile">
+            <p class="updateDate">Listing Last Updated: <span id="update">...</span></p>
             <p>White BG indicates an approved listing on the <a target="_blank" href="http://fav.me/dbo9nha">Sushidogs Trade Center</a> or the <a target="_blank" href="http://fav.me/dbx1dc6">Wanderer's Cave</a>.</p>
             <p>Yellow BG indicates this listing is not officially recognized yet by the Sushi Dog group. Be careful in the event these offers are scams.</p>
+            <div id='missingTraitsError' class='errorText' style="display:none">MISSING RARITY</div>
         </div>
 
         <div class="card topInfoTile">
@@ -163,7 +165,10 @@
 
     // -----------------------------------------------------------------------------------------------------------------------
     function showTradeCenterInfo(data, tabletop) {
-        $.each( tabletop.sheets("Sheet1").all(), function(i, soosh) {
+        $.each( tabletop.sheets("UpdateDate").all(), function(i, date) {
+            $("#update").text(date.lastUpdated);
+        });
+        $.each( tabletop.sheets("Trades").all(), function(i, soosh) {
             tradeCenter.insert({"sooshName":soosh.sooshName,
                                 "lookingFor":soosh.lookingFor,
                                 "swap":soosh.swap,
@@ -205,7 +210,7 @@
 
         var sooshOutput = "<div class='flexTable'>";
         var currSoosh;
-        var errorFlag = true;
+        var errorCounter = 0;
         tradeCenter().order("sooshName asec").each(function (soosh) {
             currSoosh = witchHexDB({sooshName:soosh.sooshName}).first();
             if (printSooshFlag(currSoosh.rarity, currSoosh.creatorType, currSoosh.sooshType, soosh.lookingFor, (soosh.swap=="x"))) {
@@ -224,11 +229,8 @@
                 if ((soosh.lookingFor).includes("cave")) { sooshOutput += "<button type='button' class='btn caveBtn'>Cave</button><button type='button' class='btn saleBtn'>Sale</button>"; }
                 sooshOutput += "</div>";
                 if ((currSoosh.rarity != "Common") && (currSoosh.rarity != "Uncommon") && (currSoosh.rarity != "Rare") && (currSoosh.rarity != "Exclusive")) {
-                    sooshOutput += "<div class='topRightWarning errorText'>MISSING RARITY</div>"
-                    if (errorFlag) {
-                        alert("Sooshes are missing rarities");
-                        errorFlag = false;
-                    }
+                    sooshOutput += "<div class='topRightWarning errorText'>MISSING RARITY</div>";
+                    errorCounter += 1;
                 }
                 sooshOutput += "<div class='description'>";
                 sooshOutput += "<a target='_blank' class='sooshDatabaseURL' href='" + currSoosh.masterlistUrl + "'><p class='description_content'>" + soosh.sooshName + "</p></a>";
@@ -254,6 +256,11 @@
                 sooshOutput += "</p></div></a></div></div>";
             }
         });
+        if (errorCounter > 0) {
+            $("#missingTraitsError").text(errorCounter + " sooshes have missing traits!");
+            $("#missingTraitsError").slideDown();
+            errorCounter = 0;
+        }
         sooshOutput += "<div></div><div></div><div></div></div>";
         $("#loaderBG").fadeOut();
         $("#loader").toggle();
@@ -265,6 +272,7 @@
     $("#filterButton").click(function() {
         $("#loaderBG").toggle();
         $("#loader").toggle();
+        $("#missingTraitsError").slideUp();
         loadTradeCenterHTML();
     });
     </script>

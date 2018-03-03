@@ -1,0 +1,165 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #F0F0F0;
+}
+input:not([type]):focus:not([readonly])+label, input[type=text]:not(.browser-default):focus:not([readonly])+label, input[type=password]:not(.browser-default):focus:not([readonly])+label, input[type=email]:not(.browser-default):focus:not([readonly])+label, input[type=url]:not(.browser-default):focus:not([readonly])+label, input[type=time]:not(.browser-default):focus:not([readonly])+label, input[type=date]:not(.browser-default):focus:not([readonly])+label, input[type=datetime]:not(.browser-default):focus:not([readonly])+label, input[type=datetime-local]:not(.browser-default):focus:not([readonly])+label, input[type=tel]:not(.browser-default):focus:not([readonly])+label, input[type=number]:not(.browser-default):focus:not([readonly])+label, input[type=search]:not(.browser-default):focus:not([readonly])+label, textarea.materialize-textarea:focus:not([readonly])+label {
+    color: #9e9e9e;
+}
+
+table td {
+    border: 1px solid rgba(0,0,0,0.87);
+    padding: 0;
+}
+
+
+.cardTile {
+    background-color: rgba(255,255,255,0.60);
+    padding: 20px;
+}
+.loginWrapper {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: 11;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #F0F0F0;
+}
+.loginSection {
+    width: 50%;
+    height: auto;
+    text-align: center;
+    margin: 70px auto;
+    padding: 2px 30px 30px 30px;
+    background-color: #fff;
+    border-radius: 3px;
+}
+.loginSection input {
+    padding: 0px;
+    display: block;
+    width: 100%;
+    border: 0px;
+    height: 40px;
+    text-align: center;
+    font-size: 16px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+    border: 1px solid #1072b9;
+}
+.loginSection button {
+  display: block;
+  font-size: 16px;
+  height: 40px;
+  width: 100%;
+  margin: 0 auto;
+  border: none;
+  color: #fff;
+  background-color: #1072b9;
+}
+
+@-webkit-keyframes glowing {
+  0% { opacity: 1; }
+  50% { opacity: 0.25; }
+  100% { opacity: 1; }
+}
+@-moz-keyframes glowing {
+  0% { opacity: 1; }
+  50% { opacity: 0.25; }
+  100% { opacity: 1; }
+}
+@-o-keyframes glowing {
+  0% { opacity: 1; }
+  50% { opacity: 0.25; }
+  100% { opacity: 1; }
+}
+@keyframes glowing {
+  0% { opacity: 1; }
+  50% { opacity: 0.25; }
+  100% { opacity: 1; }
+}
+.glowingAnimation {
+  -webkit-animation: glowing 1000ms infinite;
+  -moz-animation: glowing 1000ms infinite;
+  -o-animation: glowing 1000ms infinite;
+  animation: glowing 1000ms infinite;
+}
+
+#navigation-tabs {
+  position: fixed;
+  top: 0;
+  z-index: 10;
+}
+.headerBuffer {
+  margin-top: 60px;
+}
+.inactiveBtn {
+    background-color: #eeeeee;
+    color: #212121;
+}
+.inactiveBtn:hover, .inactiveBtn:focus {
+    background-color: #e0e0e0;
+}
+.activeBtn, .activeBtn:hover, .activeBtn:focus {
+    background-color: #EE6E73;
+}
+.blockBtn {
+  display: block;
+  margin: 5px 0;
+  background-color: rgba(238,110,115,0.9);
+}
+.blockBtn:focus, .blockBtn:hover {
+  background-color: #EE6E73;
+}
+#personalityTestSection label {
+  margin-right: 10px;
+}
+.horizontalFlex {
+  display: flex;
+  justify-content: space-between;
+}
+#inventoryBuff>button {
+    flex-grow: 1;
+    box-shadow: none;
+    border-radius: 0;
+}
+[type="radio"]:checked+label:after, [type="radio"].with-gap:checked+label:after {
+    background-color: rgb(238,110,115);
+}
+[type="radio"]:checked+label:after, [type="radio"].with-gap:checked+label:before, [type="radio"].with-gap:checked+label:after {
+    border: 2px solid rgb(238,110,115);
+}
+input:not([type]):focus:not([readonly]), input[type=text]:not(.browser-default):focus:not([readonly]), input[type=password]:not(.browser-default):focus:not([readonly]), input[type=email]:not(.browser-default):focus:not([readonly]), input[type=url]:not(.browser-default):focus:not([readonly]), input[type=time]:not(.browser-default):focus:not([readonly]), input[type=date]:not(.browser-default):focus:not([readonly]), input[type=datetime]:not(.browser-default):focus:not([readonly]), input[type=datetime-local]:not(.browser-default):focus:not([readonly]), input[type=tel]:not(.browser-default):focus:not([readonly]), input[type=number]:not(.browser-default):focus:not([readonly]), input[type=search]:not(.browser-default):focus:not([readonly]), textarea.materialize-textarea:focus:not([readonly]) {
+    border-bottom: 1px solid rgb(238,110,115);
+    -webkit-box-shadow: 0 1px 0 0 rgb(238,110,115);
+    box-shadow: 0 1px 0 0 rgb(238,110,115);
+}
+#sooshName {
+    margin: 0;
+}
+.errorText {
+    display: none;
+    margin: 0;
+    background-color: #f2dede;
+    color: #a94442;
+    padding: .5rem 1.25rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ebcccc;
+    border-top: 0;
+}
+.flexGrow>div {
+    flex-grow: 1;
+}
+#dailyOutput {
+    border: 1px solid rgba(0,0,0,0.87);
+    white-space: pre-wrap;
+    height: 10em;
+}
+#companionSection, #personalitySection {
+    display: none;
+}
+.rightInputField {
+    margin-left: 10px;
+    flex-grow: 1;
+}

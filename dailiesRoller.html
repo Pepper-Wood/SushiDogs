@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Dailies Roller</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="img/favicon.png" type="image/png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="http://materializecss.com/css/ghpages-materialize.css" rel="stylesheet">
+    <link href="css/admin.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div id="pepper" class="col s12">
+            <div class="card" style="padding:10px;">
+                <h3>Pepper's Notes</h3>
+                <p><a target="_blank" href="https://soosharpg.weebly.com/status-inflictions.html">url for status inflictions</a> All debuffs happen when a 1 is rolled; All buffs happen when a 20 is rolled.</p>
+                <table>
+                    <tr style="background-color:rgba(0,0,0,0.2)"><td>Buff/Debuff Name</td><td>Conditions it can be obtained</td></tr>
+                    <tr><td>Lucky Duck</td><td>buff for Angling, Mining, Wood-Cutting, Gathering</td></tr>
+                    <tr><td>Unlucky Duck</td><td>???</td></tr>
+                    <tr><td>Lazy Bork</td><td>debuff for Crafting, Angling, Mining, Wood-Cutting, Gathering</td></tr>
+                    <tr><td>Happy Camper</td><td>???</td></tr>
+                    <tr><td>Spooked Pupper</td><td>debuff for if soosh is too low level going into a specific area (not implemented in the roller)</td></tr>
+                    <tr><td>BEES!!!</td><td>debuff for Hunting</td></tr>
+                    <tr><td>Strong Senses</td><td>???</td></tr>
+                    <tr><td>Magic Paws</td><td>buff for Crafting</td></tr>
+                    <tr><td>Lunar Moth</td><td>buff for Hunting</td></tr>
+                </table>
+                <ul>
+                    <li><b>- Please confirm the accuracy of the information in the above table</b></li>
+                    <li><b>- What is the NEGATIVE STATUS for Companion Handling?</b></li>
+                </ul>
+            </div>
+        </div>
+
+        <h3>Dailies Roller</h3>
+        <div id="dailiesRoller" class="col s12">
+            <div class="card cardTile">
+                <div class="horizontalFlex flexGrow">
+                    <div>
+                        <label for="dailyType">Daily Type</label>
+                        <select id="dailyType" class="browser-default">
+                            <option>Crafting</option>
+                            <option>Hunting</option>
+                            <option>Angling</option>
+                            <option>Mining</option>
+                            <option>Wood-Cutting</option>
+                            <option>Gathering</option>
+                            <option>Cooking</option>
+                            <option>Companion Handling</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="locationType">Location</label>
+                        <select id="locationType" class="browser-default">
+                            <option>The Thickets</option>
+                            <option>The Midwoods</option>
+                            <option>The Thorns</option>
+                            <option>Mount Solitude</option>
+                            <option>Lake of Reflections</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="horizontalFlex">
+                    <div>
+                        <label for="sooshPronouns">Soosh Pronoun</label>
+                        <select id="sooshPronouns" class="browser-default">
+                            <option value="they">They</option>
+                            <option value="he">He</option>
+                            <option value="she">She</option>
+                        </select>
+                    </div>
+                    <div class="input-field rightInputField">
+                        <input id="sooshName" type="text">
+                        <label for="sooshName">Soosh Name</label>
+                    </div>
+                </div>
+
+                <div id="companionSection">
+                    <div class="horizontalFlex">
+                        <div>
+                            <label for="companionPronouns">Companion Pronoun</label>
+                            <select id="companionPronouns" class="browser-default">
+                                <option value="they">They</option>
+                                <option value="he">He</option>
+                                <option value="she">She</option>
+                            </select>
+                        </div>
+                        <div class="input-field rightInputField">
+                            <input id="companionName" type="text">
+                            <label for="companionName">Companion Name</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <label for="sooshSkillLvl">Soosh Skill Level</label>
+                    <select id="sooshSkillLvl" class="browser-default">
+                        <option value="0">Novice/Rookie</option>
+                        <option value="1">Apprentice</option>
+                        <option value="2">Whiz</option>
+                        <option value="3">Genius</option>
+                        <option value="4">Master</option>
+                        <option value="5">Hero</option>
+                    </select>
+                </div>
+
+                <div class="input-field">
+                    <input id="inputItemName" type="text">
+                    <label for="inputItemName">Crafting Item</label>
+                </div>
+
+                <div style="margin-top:20px">
+                    <label for="inventoryBuff">Success Modifier</label>
+                    <div id="inventoryBuff" class="horizontalFlex">
+                        <button type="button" class="btn inactiveBtn waves-effect waves-light">-3</button>
+                        <button type="button" class="btn inactiveBtn waves-effect waves-light">-2</button>
+                        <button type="button" class="btn inactiveBtn waves-effect waves-light">-1</button>
+                        <button type="button" class="btn inactiveBtn waves-effect waves-light activeBtn">0</button>
+                        <button type="button" class="btn inactiveBtn waves-effect waves-light">+1</button>
+                        <button type="button" class="btn inactiveBtn waves-effect waves-light">+2</button>
+                        <button type="button" class="btn inactiveBtn waves-effect waves-light">+3</button>
+                    </div>
+                </div>
+                <div class="card" style="margin-top:20px;padding:20px">
+                    <div class="horizontalFlex">
+                        <button id="rollDaily" type="button" class="blockBtn waves-effect waves-light btn">Roll Daily</button>
+                        <button type="button" id="copyToClipboard" class="blockBtn waves-effect waves-light btn">Copy Result to Clipboard</button>
+                        <button type="button" id="copyImgToClipboard" class="blockBtn waves-effect waves-light btn">Copy Thumbnail to Clipboard</button>
+                    </div>
+
+                    <label for="dailyOutput">Daily Result</label>
+                    <textarea id="dailyOutput"></textarea>
+                    <label for="thumbnailOutput">Thumbnail Result</label>
+                    <textarea id="thumbnailOutput"></textarea>
+                    <p id="copiedToClipboard" class="errorText">Copied Result to clipboard!</p>
+                    <p id="copiedImgToClipboard" class="errorText">Copied Thumbnail to clipboard!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Javascript -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+    <script src="http://materializecss.com/bin/materialize.js"></script>
+
+    <script src="js/tabletop.js"></script>
+    <script src="js/taffy.js"></script>
+    <script src="js/rollDaily.js"></script>
+    <script>
+    var public_spreadsheet_url = "https://docs.google.com/spreadsheets/d/1xUaU5i38rzwjQCs5RRwAQUIa6kpNcTFtlSSp_Tr80nE/edit?usp=sharing";
+    var allSooshNames = [];
+    var sooshARPGDirectory = TAFFY();
+    var statExpLevels = TAFFY();
+    var allItems = TAFFY();
+
+    loadAdmin();
+
+    $("#sooshLoginButton").click(function(e) {
+        handlePassword();
+    });
+    $("#sooshPW").keyup(function(e) {
+        if (e.keyCode == 13) {
+            handlePassword();
+        }
+    });
+    $("#inventoryBuff>button").click(function() {
+        $("#inventoryBuff>button").removeClass("activeBtn");
+        $(this).addClass("activeBtn");
+    });
+    $("#sooshName").click(function() {
+        $("#sooshNameError").slideUp();
+    });
+    $("#dailyType").change(function() {
+        $("#inputItemName").val("");
+        if ($("#dailyType option:selected").text() == "Crafting") {
+            $("#inputItemName").next().text("Crafting Item");
+            $("#inputItemName").parent().slideDown();
+        } else if ($("#dailyType option:selected").text() == "Cooking") {
+            $("#inputItemName").next().text("Cooking Item");
+            $("#inputItemName").parent().slideDown();
+        } else if ($("#dailyType option:selected").text() == "Companion Handling") {
+            $("#companionSection").slideDown();
+        } else {
+            $("#companionSection").slideUp();
+            $("#inputItemName").parent().slideUp();
+        }
+    });
+    $("#rollDaily").click(function() {
+        rollDaily();
+    });
+
+    function loadAdmin() {
+        Tabletop.init( { key: public_spreadsheet_url, callback: showInfo } );
+    }
+
+  function showInfo(data, tabletop) {
+    $.each( tabletop.sheets("allItems").all(), function(i, entry) {
+      allItems.insert({"name":entry.name,
+                       "smallImgUrl":entry.smallImgUrl,
+                       "bigImgUrl":entry.bigImgUrl,
+                       "thumbUrl":entry.thumbUrl,
+                       "lifeSkill":entry.lifeSkill,
+                       "description":entry.description,
+                       "type":entry.type,
+                       "rarity":entry.rarity,
+                       "location":entry.location
+      });
+    });
+  }
+  </script>
+</body>
+</html>

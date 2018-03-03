@@ -1,0 +1,202 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #F0F0F0;
+}
+span {
+    display: inline-block;
+}
+.card {
+    margin: .5rem;
+    background-color: #fff;
+    -webkit-transition: -webkit-box-shadow .25s;
+    transition: -webkit-box-shadow .25s;
+    transition: box-shadow .25s;
+    transition: box-shadow .25s, -webkit-box-shadow .25s;
+    border-radius: 2px;
+}
+.horizontalFlex {
+    display: flex;
+    justify-content: space-between;
+}
+.flexFill {
+    flex-grow: 1;
+}
+.itemImage {
+    width: 64px;
+}
+
+/*
+    alchemy = red
+    angling = orange
+    hunting = green
+    handling = dark green
+    gathering = turquoise
+    mining = blue
+    wood-cutting = purple
+    cooking = yellow
+*/
+.skillBG_alchemy { background-color: #ff8a80; }
+.skillBG_angling { background-color: #ffd180; }
+.skillBG_hunting { background-color: #ccff90; }
+.skillBG_handling { background-color: #b9f6ca; }
+.skillBG_gathering { background-color: #a7ffeb; }
+.skillBG_mining { background-color: #82b1ff; }
+.skillBG_wood-cutting { background-color: #ea80fc; }
+.skillBG_cooking { background-color: #ffff8d; }
+
+.skillText_alchemy { color: #d50000; }
+.skillText_angling { color: #ff6d00; }
+.skillText_hunting { color: #64dd17; }
+.skillText_handling { color: #00c853; }
+.skillText_gathering { color: #00bfa5; }
+.skillText_mining { color: #2962ff; }
+.skillText_wood-cutting { color: #aa00ff; }
+.skillText_cooking { color: #ffd600; }
+
+.rarityTab {
+    background-color: #eceff1;
+    color: #78909c;
+}
+.rarity_Common {
+    background-color: #61B2FF;
+    color: #005FBA;
+}
+.rarity_Uncommon {
+    background-color: #BE84FF;
+    color: #7927D4;
+}
+.rarity_Rare {
+    background-color: #FF82DF;
+    color: #EF26BC;
+}
+.rarity_Exclusive {
+    background-color: #FF5E62;
+    color: #E40B2F;
+}
+.locationTab {
+    border: 1px solid #a4a4a4;
+}
+
+.itemImage img {
+    width: 64px;
+    height: 100%;
+    object-fit: contain;
+}
+.itemDescription {
+    padding: 0.5em;
+}
+.itemDescription>p {
+    margin: 0;
+}
+.tab {
+    padding: 0 0.5em;
+    margin: 3px;
+    border-radius: 10em;
+}
+
+/* Responsive Tables */
+.Rtable {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 0 3em 0;
+    padding: 0;
+}
+.Rtable-cell {
+    box-sizing: border-box;
+    flex-grow: 1;
+    width: 100%;  // Default to full width
+    padding: 0.8em 1.2em;
+    overflow: hidden; // Or flex might break
+    list-style: none;
+    > h1, > h2, > h3, > h4, > h5, > h6 { margin: 0; }
+}
+
+/* Table column sizing
+================================== */
+.Rtable--2cols > .Rtable-cell  { width: 50%; }
+.Rtable--3cols > .Rtable-cell  { width: 33.33%; }
+.Rtable--4cols > .Rtable-cell  { width: 25%; }
+.Rtable--5cols > .Rtable-cell  { width: 20%; }
+.Rtable--6cols > .Rtable-cell  { width: 16.6%; }
+
+/* loader */
+#loaderBlock {
+  z-index: 101;
+  background-color: #2e2e2e;
+  position: fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+}
+#loaderSection>img {
+  position:absolute;
+  left: calc(50% - 50px);
+  top: 100px;
+  margin: auto;
+  z-index: 103;
+}
+.loader {
+  z-index: 102;
+  font-size: 10px;
+  margin: 50px auto;
+  text-indent: -9999em;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background: #ffffff;
+  background: -moz-linear-gradient(left, #ffffff 10%, rgba(255, 255, 255, 0) 42%);
+  background: -webkit-linear-gradient(left, #ffffff 10%, rgba(255, 255, 255, 0) 42%);
+  background: -o-linear-gradient(left, #ffffff 10%, rgba(255, 255, 255, 0) 42%);
+  background: -ms-linear-gradient(left, #ffffff 10%, rgba(255, 255, 255, 0) 42%);
+  background: linear-gradient(to right, #ffffff 10%, rgba(255, 255, 255, 0) 42%);
+  position: relative;
+  -webkit-animation: load3 1.4s infinite linear;
+  animation: load3 1.4s infinite linear;
+  -webkit-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  transform: translateZ(0);
+}
+.loader:before {
+  width: 50%;
+  height: 50%;
+  background: #ffffff;
+  border-radius: 100% 0 0 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  content: '';
+}
+.loader:after {
+  background: #2e2e2e;
+  width: 90%;
+  height: 90%;
+  border-radius: 50%;
+  content: '';
+  margin: auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+@-webkit-keyframes load3 {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@keyframes load3 {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
