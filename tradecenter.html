@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,7 +18,7 @@
         <h2 style="margin-top:100px">Visual Trade Center</h2>
         <div class="card topInfoTile">
             <p class="updateDate">Listing Last Updated: <span id="update">...</span></p>
-            <p>White BG indicates an approved listing on the <a target="_blank" href="http://fav.me/dbo9nha">Sushidogs Trade Center</a> or the <a target="_blank" href="http://fav.me/dbx1dc6">Wanderer's Cave</a>.</p>
+            <p>White BG indicates an approved listing on the <a target="_blank" href="http://fav.me/dbo9nha">Sushidogs Trade Center</a>.</p>
             <p>Yellow BG indicates this listing is not officially recognized yet by the Sushi Dog group. Be careful in the event these offers are scams.</p>
             <div id='missingTraitsError' class='errorText' style="display:none">MISSING RARITY</div>
         </div>
@@ -61,7 +60,7 @@
                     <ul id='offerMenuDropdown' class='dropdown-content'>
                         <li><a id="trade" class="tradeText">Trade</a></li>
                         <li><a id="swap" class="tradeText">Soosh Swaps</a></li>
-                        <li><a id="sale" class="saleText">Sale / Wanderer's Cave</a></li>
+                        <li><a id="sale" class="saleText">Sale</a></li>
                         <li><a id="contest" class="contestText">Contest</a></li>
                         <li class="divider"></li>
                         <li><a id="allOffers">All Offers</a></li>
@@ -95,7 +94,6 @@
     var offerMenuVal = "allOffers";
     // -----------------------------------------------------------------------------------------------------------------------
     function printSooshFlag(sooshRarity, sooshDesigner, sooshType, sooshOffer, sooshSwapFlag) {
-        if ((sooshOffer).includes("cave")) { sooshOffer += ", sale"; }
         if ((rarityMenuVal != "allRarities") && (rarityMenuVal != sooshRarity)) { return false; }
         if ((designerMenuVal != "allDesigners") && (designerMenuVal != sooshDesigner)) { return false; }
         if ((typeMenuVal != "allTypes") && (typeMenuVal != sooshType)) { return false; }
@@ -215,18 +213,13 @@
             currSoosh = witchHexDB({sooshName:soosh.sooshName}).first();
             if (printSooshFlag(currSoosh.rarity, currSoosh.creatorType, currSoosh.sooshType, soosh.lookingFor, (soosh.swap=="x"))) {
                 sooshOutput += "<div><div class='card";
-                if (((soosh.removeDate == "") && (!(soosh.lookingFor).includes("cave"))) || (beforeCurrentDate(soosh.removeDate))) { sooshOutput += " unofficial"; }
+                if ((soosh.removeDate == "") || (beforeCurrentDate(soosh.removeDate))) { sooshOutput += " unofficial"; }
                 sooshOutput += "'><a target='_blank' href='";
-                if ((soosh.lookingFor).includes("cave")) {
-                    sooshOutput += "http://fav.me/dbx1dc6";
-                } else {
-                    sooshOutput += soosh.journalLink;
-                }
+                sooshOutput += soosh.journalLink;
                 sooshOutput += "'><img class='sooshImg object-fit_contain' src='" + currSoosh.imgUrl + "'><div class='topLeftButton'>"
                 if ((soosh.lookingFor).includes("sale")) { sooshOutput += "<button type='button' class='btn saleBtn'>Sale</button>"; }
                 if ((soosh.lookingFor).includes("trade")) { sooshOutput += "<button type='button' class='btn tradeBtn'>Trade</button>"; }
                 if ((soosh.lookingFor).includes("contest")) { sooshOutput += "<button type='button' class='btn contestBtn'>Contest</button>"; }
-                if ((soosh.lookingFor).includes("cave")) { sooshOutput += "<button type='button' class='btn caveBtn'>Cave</button><button type='button' class='btn saleBtn'>Sale</button>"; }
                 sooshOutput += "</div>";
                 if ((currSoosh.rarity != "Common") && (currSoosh.rarity != "Uncommon") && (currSoosh.rarity != "Rare") && (currSoosh.rarity != "Exclusive")) {
                     sooshOutput += "<div class='topRightWarning errorText'>MISSING RARITY</div>";
@@ -242,17 +235,7 @@
                     sooshOutput += "Sushi ";
                 }
                 sooshOutput += currSoosh.sooshType + "</p><p class='lookingFor_content'><b>LF:</b> ";
-                if ((soosh.lookingFor).includes("cave")) {
-                    if ((currSoosh.sooshType == "Cat") || (currSoosh.rarity == "mythical")) { sooshOutput += "$210-250 (depending on traits)"; }
-                    else if ((currSoosh.rarity == "Exclusive") || (currSoosh.sooshType == "Triptych") || (currSoosh.sooshType == "Biheaded") || (currSoosh.sooshType == "Cerberal")) {
-                        sooshOutput += "$175";
-                    } else if (currSoosh.rarity == "Common") { sooshOutput += "$75"; }
-                    else if (currSoosh.rarity == "Uncommon") { sooshOutput += "$120"; }
-                    else if (currSoosh.rarity == "Rare") { sooshOutput += "$150"; }
-                    else { sooshOutput += "<span class='errorText'>NO RARITY SPECIFIED</span>"; }
-                } else {
-                    sooshOutput += soosh.seeking;
-                }
+                sooshOutput += soosh.seeking;
                 sooshOutput += "</p></div></a></div></div>";
             }
         });
