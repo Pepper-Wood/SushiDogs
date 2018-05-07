@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>SooshARPG Item Directory</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link id="favicon" rel="shortcut icon" type="image/gif" href="http://rs858.pbsrc.com/albums/ab148/SuperNyappyOfLove/Kawaii%20Stuff/Pixels/068.gif~c200" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="http://materializecss.com/css/ghpages-materialize.css" rel="stylesheet">
+    <link href="css/lightbox.css" rel="stylesheet">
+    <link href="css/itemDirectory.css" rel="stylesheet">
+</head>
+<body>
+    <div id="loaderBlock">
+        <div id="loaderSection">
+            <img src="https://orig00.deviantart.net/8601/f/2017/265/a/2/smallertransparentplaceholder_by_pepper_wood-dbo97we.png">
+            <div class="loader">Loading...</div>
+        </div>
+    </div>
+    <div class="container">
+        <p>Click on images to zoom in.</p>
+    </div>
+    <div id="allItems" class="container"></div>
+
+    <!-- Javascript -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+    <script src="js/tabletop.js"></script>
+    <script src="js/taffy.js"></script>
+    <script src="js/lightbox.js"></script>
+    <script>
+    var public_spreadsheet_url = "https://docs.google.com/spreadsheets/d/1xUaU5i38rzwjQCs5RRwAQUIa6kpNcTFtlSSp_Tr80nE/edit?usp=sharing";
+    var allItems = TAFFY();
+
+    $(document).ready(function() {
+        loadItems();
+    });
+
+    function loadItems() {
+        Tabletop.init( { key: public_spreadsheet_url, callback: showInfo } );
+    }
+
+    function showInfo(data, tabletop) {
+        $.each( tabletop.sheets("allItems").all(), function(i, entry) {
+            allItems.insert({"name":entry.name,
+                "smallImgUrl":entry.smallImgUrl,
+                "bigImgUrl":entry.bigImgUrl,
+                "thumbUrl":entry.thumbUrl,
+                "lifeSkill":entry.lifeSkill,
+                "description":entry.description,
+                "type":entry.type,
+                "rarity":entry.rarity,
+                "location":entry.location
+            });
+        });
+        createItemHtml()
+    }
+
+    function createItemHtml() {
+        /* RESULTING HTML LAYOUT
+        <div class='Rtable Rtable--4cols'>
+            <div class='Rtable-cell'>
+                <div class='card'>
+                    <div class='horizontalFlex'>
+                        <div class='itemImage skillBG_item.lifeSkill'>
+                            <a href='item.bigImgUrl' data-lightbox='image#' data-title='item.name'>
+                                <img class='image#' src='item.smallImgUrl'>
+                            </a>
+                        </div>
+                        <div class='flexFill itemDescription'>
+                            <p>item.name</p>
+                            <span class='tab skillBG_item.lifeSkill skillText_item.lifeSkill'>item.lifeSkill</span>
+                            <span class='tab rarity_item.rarity'>item.rarity</span>
+                            <p>item.description</p>
+                            <p>item.type</p>
+                            <p>item.location</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            ...
+        </div>
+        */
+
+        var allItemsHtml = "<div class='Rtable Rtable--3cols'>";
+        var counter = 0;
+        allItems().each(function (item) {
+            allItemsHtml += "<div class='Rtable-cell'><div class='card'><div class='horizontalFlex'>";
+            allItemsHtml += "<div class='itemImage skillBG_" + item.lifeSkill + "'><a href='" + item.bigImgUrl + "' data-lightbox='image" + counter + "' data-title='" + item.name + ": " + item.description + "'><img src='" + item.smallImgUrl + "'></a></div>";
+            allItemsHtml += "<div class='flexFill itemDescription'>";
+            allItemsHtml += "<p><b>" + item.name + "</b></p>";
+            if ((item.lifeSkill != "") && (item.type != "")) {
+                allItemsHtml += "<span class='tab skillBG_" + item.lifeSkill + " skillText_" + item.lifeSkill + "'>" + item.type + "</span>";
+            }
+            if (item.rarity != "") {
+                allItemsHtml += "<span class='tab rarityTab rarity_" + item.rarity + "'>" + item.rarity + "</span>";
+            }
+            if (item.location != "") {
+                allItemsHtml += "<span class='tab locationTab'>" + item.location + "</span>";
+            }
+            allItemsHtml += "<p>" + item.description + "</p>";
+            allItemsHtml += "</div>";
+            allItemsHtml += "</div></div></div>";
+            counter += 1;
+        });
+        $("#allItems").html(allItemsHtml + "<div class='Rtable-cell'></div><div class='Rtable-cell'></div><div class='Rtable-cell'></div></div>");
+        $("#loaderBlock").fadeOut();
+    }
+    </script>
+</body>
+</html>
