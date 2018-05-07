@@ -60,7 +60,7 @@ function rollDaily() {
     companionName = $("#companionName").val();
     cPronouns = $("#companionPronouns option:selected").val();
     successModifier = parseInt($("#inventoryBuff>.activeBtn").text());
-    
+
     finalRollDaily();
 }
 
@@ -86,7 +86,7 @@ function addSkillBoost(sBoost) {
 }
 
 function finalRollDaily() {
-    dieRoll = modifiedRollDie(20);
+    dieRoll = modifiedRollDie(5);
     if (dailyType == "Crafting") {
         if (dieRoll==1)
             dailyRollStr = "CRAFTING: results in a failure and a negative debuff";
